@@ -4,12 +4,13 @@ import lombok.*;
 
 import java.time.LocalDate;
 
+
 @Data
 @RequiredArgsConstructor
-@NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Movies {
-    private int id;
+    private int movies_id;
     @NonNull
     private String title;
     private String poster;
@@ -20,7 +21,7 @@ public class Movies {
     private String director;
     private String actors;
     @NonNull
-    private LocalDate iniDate;
+    private LocalDate iniDate;//TODO comprobar conversion fechas
     @NonNull
     private Boolean isPremiere;
 
