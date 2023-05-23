@@ -18,13 +18,9 @@ public class Users {
     @NonNull
     private String name;
     @NonNull
-    private int phone;
+    private String phone;
     private String image;
     private String role;
 
-    public Users(String name, String image, int phone){
-        this.name = name;
-        this.image = image;
-        this.phone = phone;
-    }
 }
+//TODO metodos de validacion de datos, ya lo hago en el front pero por si acaso mejor en los dos sitios

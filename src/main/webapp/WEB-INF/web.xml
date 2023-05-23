@@ -4,6 +4,6 @@
     <context-param>
         <description>Ruta donde guardar las imagenes</description>
         <param-name>image-path</param-name>
-        <param-value>D:\apache-tomcat-10.1.7/webapps/cinema_data</param-value>
+        <param-value>/apache-tomcat-10.1.7/webapps/cinema-data</param-value>
     </context-param>
 </web-app>
