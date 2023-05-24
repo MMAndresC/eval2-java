@@ -53,7 +53,7 @@
 </script>
 
 
-<main>
+<main class="container">
     <form class="row g-3" action="signin" method="post" id="formNewUser">
         <div class="col-md-6">
             <label for="email" class="form-label">Email</label>

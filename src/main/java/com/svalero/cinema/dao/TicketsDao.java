@@ -1,4 +1,5 @@
 package com.svalero.cinema.dao;
 
-public class TicketsDao {
+public interface TicketsDao {
+
 }

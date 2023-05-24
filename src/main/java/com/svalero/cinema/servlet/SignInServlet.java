@@ -28,7 +28,6 @@ public class SignInServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Database.connectDb();
@@ -46,6 +45,7 @@ public class SignInServlet extends HttpServlet {
                 String fileName;
                 String imagePath = request.getServletContext().getInitParameter("image-path");
                 String password = request.getParameter("password");
+                //Codifico el password antes de meterlo en la bd
                 String encodedPass = PBKDF2.encodePassword(password);
                 String name = request.getParameter("name");
                 String phone = request.getParameter("phone");

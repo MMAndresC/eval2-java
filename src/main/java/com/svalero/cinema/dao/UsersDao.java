@@ -12,6 +12,10 @@ public interface UsersDao {
     @UseRowMapper(UsersMapper.class)
     Users getUserForEmail(String email);
 
+    @SqlQuery("SELECT * FROM Users WHERE email = ? AND password = ?")
+    @UseRowMapper(UsersMapper.class)
+    Users getRegisteredUser(String enail, String password);
+
     @SqlUpdate("INSERT INTO Users (email, password, name, phone, image, role) VALUES (?, ?, ?, ?, ?, ?)")
     void addUser(String email, String password, String name, String phone, String image, String role);
 }
