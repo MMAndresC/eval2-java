@@ -46,8 +46,11 @@
                 return true;
             }
 
-            function showResponse() {
+            function showResponse(responseText, statusText) {
                 $("#img").attr("src", "../cinema-data/Default_pfp.jpg");
+                if($.trim(responseText) == "LogIn"){
+                    window.location.href = "/cinema";
+                }
             };
 
 </script>
@@ -78,6 +81,17 @@
             <label for="image" class="form-label">Avatar</label>
             <input type="file" class="form-control" id="image" name="image" accept="image/jpg, image/png, image/jpeg"
                    onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])">
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
+                <label class="form-check-label" for="invalidCheck3">
+                    He leido y acepto los terminos de usuario
+                </label>
+                <div id="invalidCheck3Feedback" class="invalid-feedback">
+                    You must agree before submitting.
+                </div>
+            </div>
         </div>
         <div class="col-12">
             <button type="submit" class="btn btn-primary" id="btnSubmit">Crear Usuario</button>
