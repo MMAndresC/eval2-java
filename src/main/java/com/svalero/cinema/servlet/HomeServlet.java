@@ -26,6 +26,5 @@ public class HomeServlet  extends HttpServlet{
         }catch(Exception e){
             throw new ServletException("Error retrieving premiere movies",e);
         }
-
     }
 }

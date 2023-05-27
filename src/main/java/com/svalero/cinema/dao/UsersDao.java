@@ -18,4 +18,7 @@ public interface UsersDao {
 
     @SqlUpdate("INSERT INTO Users (email, password, name, phone, image, role) VALUES (?, ?, ?, ?, ?, ?)")
     void addUser(String email, String password, String name, String phone, String image, String role);
+
+    @SqlUpdate("DELETE FROM Users WHERE email = ? AND password= ?")
+    boolean deleteUser(String email, String password);
 }
