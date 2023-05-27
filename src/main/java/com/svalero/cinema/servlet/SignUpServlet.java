@@ -34,7 +34,6 @@ public class SignUpServlet extends HttpServlet {
             if(user == null){
                 out.println(responseError);
             }else{
-                //TODO cambiar menu navy mostrar usuario cuando este logeado, link a zona de usuario
                 HttpSession session = request.getSession();
                 session.setAttribute("user", email);
                 session.setAttribute("role", user.getRole());
@@ -43,6 +42,7 @@ public class SignUpServlet extends HttpServlet {
                 Cookie userName = new Cookie("user", email);
                 userName.setMaxAge(30*60);
                 response.addCookie(userName);
+                //Esto lo devuelvo para que en el ajax se evalue si ha tenido exito o no el login
                 out.println("LogIn");
             }
         } catch (ClassNotFoundException cnfe) {

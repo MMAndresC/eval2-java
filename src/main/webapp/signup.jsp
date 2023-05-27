@@ -21,7 +21,6 @@
         console.log(formData[1]);
      }
      function showResponse(responseText, statusText) {
-     //TODO modal con mensaje de error?, mirar como mandar un json de respuesta del server y asi cambiar pag solo cuando este logueado
         if($.trim(responseText) == "LogIn"){
             window.location.href = "/cinema";
         }

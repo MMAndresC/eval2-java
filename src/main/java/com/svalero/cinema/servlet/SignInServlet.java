@@ -7,10 +7,7 @@ import com.svalero.cinema.utils.PBKDF2;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
+import jakarta.servlet.http.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -70,6 +67,16 @@ public class SignInServlet extends HttpServlet {
                     dao.addUser(email, encodedPass, name, phone, fileName, role);
                     return null;
                 });
+                HttpSession session = request.getSession();
+                session.setAttribute("user", email);
+                session.setAttribute("role", user.getRole());
+                //setting session to expiry in 30 mins
+                session.setMaxInactiveInterval(30*60);
+                Cookie userName = new Cookie("user", email);
+                userName.setMaxAge(30*60);
+                response.addCookie(userName);
+                //Esto lo devuelvo para que en el ajax se evalue si ha tenido exito o no el login
+                out.println("LogIn");
             }
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
