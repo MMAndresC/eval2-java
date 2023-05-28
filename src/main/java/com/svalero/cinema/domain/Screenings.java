@@ -5,19 +5,19 @@ import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.List;
 
 @Data
 @RequiredArgsConstructor
 public class Screenings {
     @NonNull
-    private int idHall;
+    private int id_hall;
     @NonNull
-    private int idMovie;
+    private int id_movie;
     @NonNull
-    private String titleMovie;
+    private Date dateScreening;
     @NonNull
-    private String session;
-    private List<Integer> takenSeats;
+    private String hourScreening;
+    private List<Seats> occupied_seats;
 }

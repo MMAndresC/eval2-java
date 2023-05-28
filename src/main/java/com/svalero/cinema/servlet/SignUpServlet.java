@@ -1,8 +1,12 @@
 package com.svalero.cinema.servlet;
 
 
+import com.svalero.cinema.dao.CinemaHallsDao;
 import com.svalero.cinema.dao.Database;
+import com.svalero.cinema.dao.MoviesDao;
 import com.svalero.cinema.dao.UsersDao;
+import com.svalero.cinema.domain.CinemaHalls;
+import com.svalero.cinema.domain.Movies;
 import com.svalero.cinema.domain.Users;
 import com.svalero.cinema.utils.PBKDF2;
 import jakarta.servlet.ServletException;
@@ -11,6 +15,7 @@ import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet("/signup")
 public class SignUpServlet extends HttpServlet {
@@ -42,6 +47,13 @@ public class SignUpServlet extends HttpServlet {
                 Cookie userName = new Cookie("user", email);
                 userName.setMaxAge(30*60);
                 response.addCookie(userName);
+                //No consigo que funcione el servlet adminzone, asi que voy a meter en session los datos
+                if(user.getRole().equalsIgnoreCase("admin")){
+                    List<Movies> moviesList = Database.jdbi.withExtension(MoviesDao.class, MoviesDao::getPremiereMovies);
+                    session.setAttribute("movies",moviesList);
+                    List<CinemaHalls> hallsList = Database.jdbi.withExtension(CinemaHallsDao.class, CinemaHallsDao::getCinemaHalls);
+                    session.setAttribute("halls", hallsList);
+                }
                 //Esto lo devuelvo para que en el ajax se evalue si ha tenido exito o no el login
                 out.println("LogIn");
             }

@@ -36,8 +36,13 @@
                     </c:if>
                     <c:if test = "${sessionScope.user != null}">
                         <li class="nav-item">
-                            <p>Bienvenido, ${sessionScope.user}</p>
+                            <p>Bienvenide, ${sessionScope.user}</p>
                         </li>
+                        <c:if test = "${sessionScope.role.trim() == 'admin'}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="adminzone.jsp">Zona Admin</a>
+                            </li>
+                        </c:if>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Zona Usuario
