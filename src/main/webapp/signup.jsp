@@ -6,7 +6,6 @@
     $(document).ready(function() {
         var options = {
             target: "#result",
-            beforeSubmit: showRequest,
             success: showResponse,
         };
 
@@ -16,10 +15,7 @@
             return false;
         });
     });
-     function showRequest(formData, jqForm, options){
-        console.log(formData[0]);
-        console.log(formData[1]);
-     }
+
      function showResponse(responseText, statusText) {
         if($.trim(responseText) == "LogIn"){
             window.location.href = "/cinema";

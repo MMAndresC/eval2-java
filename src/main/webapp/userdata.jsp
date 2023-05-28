@@ -12,7 +12,6 @@
         })
         var optionsDelete = {
             target: "#result",
-            beforeSubmit: showRequestDelete,
             success: showResponseDelete,
         };
 
@@ -20,26 +19,48 @@
             $(this).ajaxSubmit(optionsDelete);
             return false;
         });
-    })
 
-    function showRequestDelete(formData, jqForm, options){
-        console.log(formData);
-    }
+        var optionsEdit = {
+            target: "#result",
+            beforeSubmit: showRequestEdit,
+            success: showResponseEdit,
+        };
+        $('#formEditUser').ajaxForm(optionsEdit);
+    })
 
     function showResponseDelete(responseText, statusText) {
         if($.trim(responseText) == "deleted"){
              window.location.href = "/cinema";
         }
     }
+
+   function showRequestEdit(formData, jqForm, options){
+        var patternPhone = /^[0-9-()+]{3,20}/;
+        if(!formData[3].value.match(patternPhone)){
+            alert('Formato de telefono no valido');
+            $("#phone").select();
+            return false;
+        }
+        return true;
+   }
+
+   function showResponseEdit(responseText, statusText) {
+        if($.trim(responseText) == "Saved"){
+             window.location.href = "/cinema/user-data";
+        }
+   }
+
 </script>
 
 <main class="container">
-    <form class="g-3 container" action="edit-user" method="post" id="formEditUser">
+    <form class="g-3 container" action="user-edit" method="post" id="formEditUser">
         <div class="row">
-            <img src="../cinema-data/${data.image}" class="img-thumbnail col" alt="avatar" name="img">
+            <img src="../cinema-data/${data.image}" class="img-thumbnail col" alt="avatar" name="img" id="img">
         </div>
         <div class="row">
-            <input type="file" class="form-control col" id="image" name="image">
+            <input type="hidden" class="form-control" id="image" name="image" value="${data.image}">
+            <input type="file" class="form-control col" id="newImg" name="newImg" accept="image/jpg, image/png, image/jpeg"
+                   onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])">
         </div>
         <div class="row">
             <div class="col">
@@ -53,17 +74,17 @@
         <div class="row">
             <div class="col-md-6">
                 <label for="name" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="name" value="${data.name}">
+                <input type="text" class="form-control" id="name" name="name" value="${data.name}">
             </div>
             <div class="col-md-6">
                 <label for="phone" class="form-label">Telefono</label>
-                <input type="text" class="form-control" id="phone" value="${data.phone}">
+                <input type="text" class="form-control" id="phone" name="phone" value="${data.phone}">
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <button class="btn btn-primary" type="submit">Guardar cambios</button>
-                <button type="button" id="btn-delete" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">BORRAR</button>
+                <button type="button" id="btn-delete" class="btn btn-warning" >BORRAR usuario</button>
             </div>
         </div>
     </form>
@@ -71,7 +92,8 @@
         <form class="" action="user-delete" method="post" id="formDeleteUser">
             <p>Borrara sus datos personales y el historial de todos los tickets que ha ido comprando</p>
             <p>Esta accion es irreversible, ¿Quiere darse de baja?</p>
-            <input type="text" class="form-control" id="password" name="password" placeholder="password">
+            <input type="hidden" class="form-control" id="image-del" name="image-del" value="${data.image}"/>
+            <input type="password" class="form-control" id="password" name="password" placeholder="password">
             <button class="btn btn-danger" type="submit" id="btn-confirm-del">BORRAR</button>
             <button class="btn btn-info" type="button" id="btn-cancel-del">Atras</button>
         </form>

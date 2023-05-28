@@ -46,6 +46,7 @@ public class SignInServlet extends HttpServlet {
                 String encodedPass = PBKDF2.encodePassword(password);
                 String name = request.getParameter("name");
                 String phone = request.getParameter("phone");
+                //Forzar el role de user en todos los registros
                 String role = "user";
                 String image = request.getParameter("image");
                 if( image != "" ){
@@ -69,7 +70,7 @@ public class SignInServlet extends HttpServlet {
                 });
                 HttpSession session = request.getSession();
                 session.setAttribute("user", email);
-                session.setAttribute("role", user.getRole());
+                session.setAttribute("role", role);
                 //setting session to expiry in 30 mins
                 session.setMaxInactiveInterval(30*60);
                 Cookie userName = new Cookie("user", email);

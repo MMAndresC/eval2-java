@@ -20,5 +20,9 @@ public interface UsersDao {
     void addUser(String email, String password, String name, String phone, String image, String role);
 
     @SqlUpdate("DELETE FROM Users WHERE email = ? AND password= ?")
-    boolean deleteUser(String email, String password);
+    int deleteUser(String email, String password);
+    @SqlUpdate("UPDATE Users SET name = ?, image = ?, phone = ? WHERE email = ?")
+    int editDataUser(String name, String image, String phone, String email);
+
+
 }

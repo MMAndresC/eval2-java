@@ -21,12 +21,6 @@
                 var patternEmail = /^[a-zA-Z0-9\._-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/;
                 var patternPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
                 var patternPhone = /^[0-9-()+]{3,20}/;
-                //TODO borrar estos console.log
-                 console.log(formData[0]);
-                      console.log(formData[1]);
-                         console.log(formData[2]);
-                            console.log(formData[3]);
-                    console.log(formData[4]);
                  if(!formData[0].value.match(patternEmail)){
                     alert('Formato de mail no valido');
                     $("#email").select();
@@ -42,7 +36,6 @@
                     $("#phone").select();
                     return false;
                 }
-                //TODO broken img una solucion puede ser poner default de fondo del div, mirar otras formas
                 return true;
             }
 
