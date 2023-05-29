@@ -3,6 +3,7 @@
 
 <%@include file="includes/header.jsp"%>
 
+
 <c:if test="${sessionScope.role != 'admin'}">
     <c:redirect url = "/"/>
 </c:if>
@@ -52,17 +53,61 @@
                 <td>
                     <input type="text" name="hour" value="${screening.hourScreening}"/>
                 </td>
-                <td></td>
+                <td>
+                    <button class="btn btn-primary" type="submit">Editar</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" type="button" name="btn-delete" id="${screening.id}">Borrar</button>
+                </td>
             </tr>
         </c:forEach>
         </form>
         </tbody>
+        <div class="container" id="confirm-dialog-del"hidden>
+
+                <p>¿Seguro?</p>
+                <button class="btn btn-danger" type="button" id="btn-confirm-del">
+                    <a href="screening-delete?id=" id="delete-link">Borrar</a>
+                </button>
+                <button class="btn btn-info" type="button" id="btn-cancel-del">Atras</button>
+
+        </div>
     </table>
     <div id="result"></div>
 
 </main>
 
 <%@include file="includes/footer.jsp"%>
+
+<script>
+    $(document).ready(function() {
+        $('[name="btn-delete"]').click(function() {
+            $('#confirm-dialog-del').removeAttr('hidden');
+            $('#delete-link').attr("href", "screening-delete?id=" + this.id)
+        })
+        $('#btn-cancel-del').click(function() {
+            $('#confirm-dialog-del').attr('hidden', '');
+        })
+
+
+        var optionsEdit = {
+            target: "#result",
+            success: showResponseEdit,
+        };
+        $('#formEditScreening').ajaxForm(optionsEdit);
+    })
+
+
+
+   function showResponseEdit(responseText, statusText) {
+        if($.trim(responseText) == "Saved"){
+           console.log("saved");
+        }
+   }
+
+</script>
+
+
 
 
 

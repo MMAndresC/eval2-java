@@ -12,6 +12,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class Screenings {
     @NonNull
+    private int id;
+    @NonNull
     private int id_hall;
     @NonNull
     private int id_movie;
