@@ -3,51 +3,6 @@
 
 <%@include file="includes/header.jsp"%>
 
-<script>
-        // wait for the DOM to be loaded
-        $(document).ready(function() {
-            var options = {
-                target: '#result',
-                beforeSubmit: showRequest,
-                success: showResponse,
-                clearForm: true,
-                resetForm: true,
-            }
-            $('#formNewUser').ajaxForm(options);
-        });
-
-            function showRequest(formData, jqForm, options){
-                //Validacion de los datos
-                var patternEmail = /^[a-zA-Z0-9\._-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/;
-                var patternPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-                var patternPhone = /^[0-9-()+]{3,20}/;
-                 if(!formData[0].value.match(patternEmail)){
-                    alert('Formato de mail no valido');
-                    $("#email").select();
-                    return false;
-                }
-                if(!formData[1].value.match(patternPassword)){
-                    alert('Contraseña tiene que ser longitud 8-15, letra mayuscula, minusculas, numero y simbolo');
-                    $("#password").select();
-                    return false;
-                }
-                if(!formData[3].value.match(patternPhone)){
-                    alert('Formato de telefono no valido');
-                    $("#phone").select();
-                    return false;
-                }
-                return true;
-            }
-
-            function showResponse(responseText, statusText) {
-                $("#img").attr("src", "../cinema-data/Default_pfp.jpg");
-                if($.trim(responseText) == "LogIn"){
-                    window.location.href = "/cinema";
-                }
-            };
-
-</script>
-
 
 <main class="container">
     <form class="row g-3" action="signin" method="post" id="formNewUser">
@@ -92,3 +47,48 @@
 
 
 <%@include file="includes/footer.jsp"%>
+
+<script>
+        // wait for the DOM to be loaded
+        $(document).ready(function() {
+            var options = {
+                target: '#result',
+                beforeSubmit: showRequest,
+                success: showResponse,
+                clearForm: true,
+                resetForm: true,
+            }
+            $('#formNewUser').ajaxForm(options);
+        });
+
+            function showRequest(formData, jqForm, options){
+                //Validacion de los datos
+                var patternEmail = /^[a-zA-Z0-9\._-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/;
+                var patternPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+                var patternPhone = /^[0-9-()+]{3,20}/;
+                 if(!formData[0].value.match(patternEmail)){
+                    alert('Formato de mail no valido');
+                    $("#email").select();
+                    return false;
+                }
+                if(!formData[1].value.match(patternPassword)){
+                    alert('Contraseña tiene que ser longitud 8-15, letra mayuscula, minusculas, numero y simbolo');
+                    $("#password").select();
+                    return false;
+                }
+                if(!formData[3].value.match(patternPhone)){
+                    alert('Formato de telefono no valido');
+                    $("#phone").select();
+                    return false;
+                }
+                return true;
+            }
+
+            function showResponse(responseText, statusText) {
+                $("#img").attr("src", "../cinema-data/Default_pfp.jpg");
+                if($.trim(responseText) == "LogIn"){
+                    window.location.href = "/cinema";
+                }
+            };
+
+</script>

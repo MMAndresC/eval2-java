@@ -11,4 +11,10 @@ public class DateUtils {
     public static LocalDate getLocalDate(Date date) {
         return new java.sql.Date(date.getTime()).toLocalDate();
     }
+
+    public static String formatDate(String date){
+        String[] items = date.split("-");
+        String formattedDate = items[2] + "/" + items [1] + "/" + items[0];
+        return formattedDate;
+    }
 }

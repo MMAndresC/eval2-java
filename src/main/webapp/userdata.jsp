@@ -2,55 +2,7 @@
 
 <%@include file="includes/header.jsp"%>
 
-<script>
-    $(document).ready(function() {
-        $('#btn-delete').click(function() {
-            $('#confirm-dialog-del').removeAttr('hidden');
-        })
-        $('#btn-cancel-del').click(function() {
-            $('#confirm-dialog-del').attr('hidden', '');
-        })
-        var optionsDelete = {
-            target: "#result",
-            success: showResponseDelete,
-        };
 
-        $('#formDeleteUser').submit(function() {
-            $(this).ajaxSubmit(optionsDelete);
-            return false;
-        });
-
-        var optionsEdit = {
-            target: "#result",
-            beforeSubmit: showRequestEdit,
-            success: showResponseEdit,
-        };
-        $('#formEditUser').ajaxForm(optionsEdit);
-    })
-
-    function showResponseDelete(responseText, statusText) {
-        if($.trim(responseText) == "deleted"){
-             window.location.href = "/cinema";
-        }
-    }
-
-   function showRequestEdit(formData, jqForm, options){
-        var patternPhone = /^[0-9-()+]{3,20}/;
-        if(!formData[3].value.match(patternPhone)){
-            alert('Formato de telefono no valido');
-            $("#phone").select();
-            return false;
-        }
-        return true;
-   }
-
-   function showResponseEdit(responseText, statusText) {
-        if($.trim(responseText) == "Saved"){
-             window.location.href = "/cinema/user-data";
-        }
-   }
-
-</script>
 
 <main class="container">
     <form class="g-3 container" action="user-edit" method="post" id="formEditUser">
@@ -102,3 +54,53 @@
 </main>
 
 <%@include file="includes/footer.jsp"%>
+
+<script>
+    $(document).ready(function() {
+        $('#btn-delete').click(function() {
+            $('#confirm-dialog-del').removeAttr('hidden');
+        })
+        $('#btn-cancel-del').click(function() {
+            $('#confirm-dialog-del').attr('hidden', '');
+        })
+        var optionsDelete = {
+            target: "#result",
+            success: showResponseDelete,
+        };
+
+        $('#formDeleteUser').submit(function() {
+            $(this).ajaxSubmit(optionsDelete);
+            return false;
+        });
+
+        var optionsEdit = {
+            target: "#result",
+            beforeSubmit: showRequestEdit,
+            success: showResponseEdit,
+        };
+        $('#formEditUser').ajaxForm(optionsEdit);
+    })
+
+    function showResponseDelete(responseText, statusText) {
+        if($.trim(responseText) == "deleted"){
+             window.location.href = "/cinema";
+        }
+    }
+
+   function showRequestEdit(formData, jqForm, options){
+        var patternPhone = /^[0-9-()+]{3,20}/;
+        if(!formData[3].value.match(patternPhone)){
+            alert('Formato de telefono no valido');
+            $("#phone").select();
+            return false;
+        }
+        return true;
+   }
+
+   function showResponseEdit(responseText, statusText) {
+        if($.trim(responseText) == "Saved"){
+             window.location.href = "/cinema/user-data";
+        }
+   }
+
+</script>

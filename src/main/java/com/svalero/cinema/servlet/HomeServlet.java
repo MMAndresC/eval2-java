@@ -20,7 +20,7 @@ public class HomeServlet  extends HttpServlet{
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Database.connectDb();
             List<Movies> moviesList = Database.jdbi.withExtension(MoviesDao.class, MoviesDao::getPremiereMovies);
-            request.setAttribute("premiere", moviesList); // Store products in request scope.
+            request.setAttribute("premiere", moviesList); // Store products in request scope
             request.getRequestDispatcher("/index.jsp").forward(request, response); // Forward to JSP page
         }catch(Exception e){
             throw new ServletException("Error retrieving premiere movies",e);

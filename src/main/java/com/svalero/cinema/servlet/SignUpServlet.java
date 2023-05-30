@@ -53,6 +53,7 @@ public class SignUpServlet extends HttpServlet {
                     session.setAttribute("movies",moviesList);
                     List<CinemaHalls> hallsList = Database.jdbi.withExtension(CinemaHallsDao.class, CinemaHallsDao::getCinemaHalls);
                     session.setAttribute("halls", hallsList);
+                    session.setAttribute("indexMovie", 0);
                 }
                 //Esto lo devuelvo para que en el ajax se evalue si ha tenido exito o no el login
                 out.println("LogIn");

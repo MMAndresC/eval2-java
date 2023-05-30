@@ -2,26 +2,7 @@
 
 <%@include file="includes/header.jsp"%>
 
-<script>
-    $(document).ready(function() {
-        var options = {
-            target: "#result",
-            success: showResponse,
-        };
 
-        // bind to the form's submit event
-        $('#formRegisterUser').submit(function() {
-            $(this).ajaxSubmit(options);
-            return false;
-        });
-    });
-
-     function showResponse(responseText, statusText) {
-        if($.trim(responseText) == "LogIn"){
-            window.location.href = "/cinema";
-        }
-     }
-</script>
 
 <main class="container">
     <form class="row g-3" action="signup" method="post" id="formRegisterUser">
@@ -42,3 +23,24 @@
 
 
 <%@include file="includes/footer.jsp"%>
+
+<script>
+    $(document).ready(function() {
+        var options = {
+            target: "#result",
+            success: showResponse,
+        };
+
+        // bind to the form's submit event
+        $('#formRegisterUser').submit(function() {
+            $(this).ajaxSubmit(options);
+            return false;
+        });
+    });
+
+     function showResponse(responseText, statusText) {
+        if($.trim(responseText) == "LogIn"){
+            window.location.href = "/cinema";
+        }
+     }
+</script>

@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,9 +20,11 @@ public class ScreeningsShowServlet  extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try{
+            HttpSession session = request.getSession(false);
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Database.connectDb();
             int movieId = parseInt(request.getParameter("movies_id"));
+            session.setAttribute("indexMovie", movieId);
             List<Screenings> screeningsList = Database.jdbi.withExtension(ScreeningsDao.class, dao -> {
                 return dao.getScreenings(movieId);
             });
