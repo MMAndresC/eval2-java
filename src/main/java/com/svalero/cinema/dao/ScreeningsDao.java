@@ -20,5 +20,8 @@ public interface ScreeningsDao {
     @SqlUpdate("UPDATE Screenings SET id_hall = ?, dateScreening = TO_DATE( ?, 'DD/MM/YY'), hourScreening = ? WHERE screening_id = ?")
     int editScreening(int hall, Date date, String hour, int id);
 
+    @SqlUpdate("INSERT INTO Screenings (id_hall, id_movie, dateScreening, hourScreening) VALUES (?, ?, TO_DATE( ?, 'DD/MM/YY'), ?)")
+    void addScreening(int hall, int movie, Date date, String hour);
+
 
 }

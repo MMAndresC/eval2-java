@@ -36,7 +36,7 @@
             <th scope="col"></th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="list-screenings">
         <form class="row g-3" action="screening-edit" method="post" id="formEditScreening">
             <c:forEach items= "${screenings}" var="screening">
                 <tr>
@@ -77,6 +77,31 @@
         </div>
     </table>
     <div id="result"></div>
+    <div class="container">
+        <form class="row g-3" action="screening-add" method="post" id="formAddScreening">
+                <div class="row">
+                    <span class="col-1">Sala</span>
+                    <select id="select-hall-add" name="hall-add" class="form-select col-2">>
+                        <c:forEach items= "${sessionScope.halls}" var="hall">
+                            <option value="${hall.id}" > Sala ${hall.id}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="row">
+                    <input type="hidden" id="movie-add" name="movie-add" value="${sessionScope.indexMovie}"/>
+                    <span class="col-1">Fecha</span>
+                    <input type="date" name="date-add" id="date-add" class="col-2"/>
+                </div>
+                <div clas="row">
+                    <span class="col-1">Hora</span>
+                    <input type="text" name="hour-add" id="hour-add" class="col-2"/>
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary col-2" type="submit" ${(sessionScope.indexMovie == 0) ? "disabled" : ""}>Añadir</button>
+                    <button class="btn btn-secondary col-2" type="reset">Limpiar</button>
+                </div>
+        </form>
+    </div>
 
 </main>
 
@@ -91,6 +116,10 @@
         $('#btn-cancel-del').click(function() {
             $('#confirm-dialog-del').attr('hidden', '');
         })
+        //Cuando cambie el select de movies limpie el listado anterior
+        $('#movies_id').change(function() {
+            $('#list-screenings').html("");
+        });
 
         var optionsEdit = {
             target: "#result",
@@ -98,6 +127,13 @@
             success: showResponseEdit,
         };
         $('#formEditScreening').ajaxForm(optionsEdit);
+
+        var optionsAdd = {
+            target: "#result",
+            beforeSubmit: showRequestAdd,
+            success: showResponseAdd,
+        }
+        $('#formAddScreening').ajaxForm(optionsAdd);
     })
 
     function showRequestEdit(formData, jqForm, options){
@@ -132,6 +168,41 @@
            console.log("saved");
         }
    }
+
+   function showRequestAdd(formData, jqForm, options){
+        console.log(formData[0]);
+        console.log(formData[1]);
+        console.log(formData[2]);
+        console.log(formData[3]);
+        var patternHour = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+        if(!formData[3].value.match(patternHour)){
+            alert('Formato de hora no valido, ej 03:15');
+            $("[name='hour-add']").select();
+            return false;
+        }
+
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1;
+        var yyyy = today.getFullYear();
+        if(dd<10) dd='0'+dd;
+        if(mm<10) mm='0'+mm;
+        today =  yyyy + '-' + mm + '-' + dd;
+        if(formData[2].value < today){
+            alert('Fecha no valida');
+            $("[name='date-add']").select();
+            return false;
+        }
+        return true;
+   }
+
+    function showResponseAdd(responseText, statusText) {
+        if($.trim(responseText) == "Saved"){
+            window.location.href = "adminzone.jsp";
+        }
+   }
+
+
 
 </script>
 
