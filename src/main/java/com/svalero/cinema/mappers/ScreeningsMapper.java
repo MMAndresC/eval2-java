@@ -14,8 +14,8 @@ public class ScreeningsMapper implements RowMapper<Screenings>{
     public Screenings map(ResultSet rs, StatementContext ctx) throws SQLException {
         return new Screenings(
                 rs.getInt("screening_id"),
-                rs.getInt("id_movie"),
                 rs.getInt("id_hall"),
+                rs.getInt("id_movie"),
                 rs.getDate("dateScreening"),
                 rs.getString("hourScreening")
         );

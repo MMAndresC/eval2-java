@@ -81,7 +81,7 @@
         <form class="row g-3" action="screening-add" method="post" id="formAddScreening">
                 <div class="row">
                     <span class="col-1">Sala</span>
-                    <select id="select-hall-add" name="hall-add" class="form-select col-2">>
+                    <select id="select-hall-add" name="hall-add" class="form-select col-2" ${(sessionScope.indexMovie == 0) ? "disabled" : ""}>
                         <c:forEach items= "${sessionScope.halls}" var="hall">
                             <option value="${hall.id}" > Sala ${hall.id}</option>
                         </c:forEach>
@@ -90,11 +90,11 @@
                 <div class="row">
                     <input type="hidden" id="movie-add" name="movie-add" value="${sessionScope.indexMovie}"/>
                     <span class="col-1">Fecha</span>
-                    <input type="date" name="date-add" id="date-add" class="col-2"/>
+                    <input type="date" name="date-add" id="date-add" class="col-2" ${(sessionScope.indexMovie == 0) ? "disabled" : ""}/>
                 </div>
                 <div clas="row">
                     <span class="col-1">Hora</span>
-                    <input type="text" name="hour-add" id="hour-add" class="col-2"/>
+                    <input type="text" name="hour-add" id="hour-add" class="col-2" ${(sessionScope.indexMovie == 0) ? "disabled" : ""}/>
                 </div>
                 <div class="row">
                     <button class="btn btn-primary col-2" type="submit" ${(sessionScope.indexMovie == 0) ? "disabled" : ""}>Añadir</button>
@@ -165,7 +165,7 @@
 
    function showResponseEdit(responseText, statusText) {
         if($.trim(responseText) == "Saved"){
-           console.log("saved");
+           window.location.href = "adminzone.jsp";
         }
    }
 

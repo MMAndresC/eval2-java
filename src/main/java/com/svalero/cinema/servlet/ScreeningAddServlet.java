@@ -33,6 +33,8 @@ public class ScreeningAddServlet extends HomeServlet{
                 dao.addScreening (hall, movie, sqlDate, hour);
                 return null;
             });
+            HttpSession session = request.getSession(false);
+            session.setAttribute("indexMovie", 0);
             out.println("Saved");
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();

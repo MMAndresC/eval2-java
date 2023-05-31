@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 
 import java.io.IOException;
@@ -32,8 +33,10 @@ public class ScreeningEditServlet extends HttpServlet {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Database.connectDb();
             int edited = Database.jdbi.withExtension(ScreeningsDao.class, dao -> dao.editScreening(hall, sqlDate, hour, id));
+            HttpSession session = request.getSession(false);
+            session.setAttribute("indexMovie", 0);
             if(edited > 0){
-                out.println("saved");
+                out.println("Saved");
             }else{
                 out.println(
                         "<div class='alert alert-danger' role='alert'> " +
