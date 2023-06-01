@@ -3,7 +3,14 @@
 
 <%@include file="includes/header.jsp"%>
     <main>
-        <h1>Cartelera</h1>
+        <div>
+            <h1>Cartelera</h1>
+            <form class="d-flex" action="movie-search" method="get" id="formSearchMovie">
+                <input class="form-control me-2" type="search" placeholder="Titulo" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+                <div id="result-search"></div>
+            </form>
+        </div>
         <section>
             <div class="album py-5 bg-light">
                 <div class="container">
@@ -25,3 +32,4 @@
     </main>
 
 <%@include file="includes/footer.jsp"%>
+
