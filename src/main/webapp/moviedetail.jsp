@@ -17,10 +17,10 @@
                     <div class="horarios">
                         <ul>
                             <c:forEach items="${screenings}" var="screening">
-                                <li>${screening.dateScreening}</li>
+                                <li>${screening.formattedDate}</li>
                                 <ul>
                                     <li>
-                                        <a href="/ticket?id=${screening.id}">${screening.dateScreening} Sala ${screening.id_hall} - ${screening.hourScreening}</a>
+                                        <a href="/ticket?id=${screening.id}">${screening.formattedDate} Sala ${screening.id_hall} - ${screening.hourScreening}</a>
                                         <br>
                                     </li>
 

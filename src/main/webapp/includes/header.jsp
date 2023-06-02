@@ -49,7 +49,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="user-data">Datos</a></li>
-                                <li><a class="dropdown-item" href="show-tickets">Entradas</a></li>
+                                <li><a class="dropdown-item" href="show-tickets?btn=1">Entradas</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">

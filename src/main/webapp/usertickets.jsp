@@ -13,7 +13,7 @@
                 <input class="form-control me-2" type="date" name="date" placeholder="Fecha" aria-label="Search" value="${date}">
                 <button class="btn btn-outline-success" type="submit">Buscar</button>
                 <button class="btn btn-outline-success" type="button">
-                    <a href="show-tickets">Mostrar todos</a>
+                    <a href="show-tickets?btn=1">Mostrar todos</a>
                 </button>
             </div>
             <fieldset>
@@ -37,7 +37,7 @@
     </div>
     <section class="row">
         <ul class="container">
-            <c:forEach items="${tickets}" var="ticket">
+            <c:forEach items="${tickets}" var="ticket" begin="${offset}" end="${limit}">
                 <li class="row">
                     <span class="col">${ticket.title}</span>
                     <span class="col">${ticket.hall}</span>
@@ -48,6 +48,19 @@
                 </li>
             </c:forEach>
         </ul>
+        <nav aria-label="...">
+
+                <ul class="pagination pagination-sm">
+                    <c:forEach begin="0" end="${end}" varStatus="status">
+                        <li class="page-item" aria-current="page">
+                            <button type="submit" class="page-link">
+                                <a href="show-tickets?btn=${status.index + 1}">${status.index + 1}</a>
+                            </button>
+                        </li>
+                    </c:forEach>
+                </ul>
+
+        </nav>
     </section>
 </main>
 
