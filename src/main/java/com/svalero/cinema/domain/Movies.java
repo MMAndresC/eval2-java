@@ -8,7 +8,6 @@ import java.time.LocalDate;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-@ToString
 public class Movies {
     private int movies_id;
     @NonNull

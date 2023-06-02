@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.sql.Date;
 import java.util.List;
 
 @Data
@@ -12,19 +13,21 @@ import java.util.List;
 @RequiredArgsConstructor
 public class Tickets {
     @NonNull
-    private String clientEmail;
+    private int ticketNum;
     @NonNull
-    private String clientName;
+    private String email;
     @NonNull
     private int idMovie;
-    private String movie;
     @NonNull
     private int hall;
     @NonNull
-    private String session;
+    private Date date;
     @NonNull
+    private String hour;
     private List<Integer> mySeats;
     @NonNull
     private float price;
     private String qr;
+    private String title;
+    private String formattedDate;
 }

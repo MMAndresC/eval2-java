@@ -21,4 +21,8 @@ public interface MoviesDao {
     @UseRowMapper(MoviesMapper.class)
     Movies getMovie(int id);
 
+    @SqlQuery("SELECT * FROM Movies WHERE movies_id = ?")
+    @UseRowMapper(MoviesMapper.class)
+    Movies getTitleById(int id);
+
 }

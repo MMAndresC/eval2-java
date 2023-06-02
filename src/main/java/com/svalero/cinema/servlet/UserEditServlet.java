@@ -5,10 +5,7 @@ import com.svalero.cinema.dao.UsersDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import jakarta.servlet.http.Part;
+import jakarta.servlet.http.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +18,7 @@ import java.util.UUID;
 
 @WebServlet("/user-edit")
 @MultipartConfig
-public class UserEditServlet extends HomeServlet{
+public class UserEditServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

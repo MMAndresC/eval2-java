@@ -16,7 +16,8 @@ import java.time.LocalDate;
 
 
 @WebServlet("/screening-add")
-public class ScreeningAddServlet extends HomeServlet{
+public class ScreeningAddServlet extends HttpServlet{
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();

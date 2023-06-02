@@ -22,4 +22,5 @@ public class Screenings {
     @NonNull
     private String hourScreening;
     private List<Seats> occupied_seats;
+    private String formattedDate;
 }

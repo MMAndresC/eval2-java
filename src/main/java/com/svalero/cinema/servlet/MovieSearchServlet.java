@@ -10,15 +10,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet("/movie-search")
 public class MovieSearchServlet extends HttpServlet {
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        String notFound = ("<span class='alert alert-danger' role='alert'>Pelicula no encontrada</span>");
         try{
             String title = request.getParameter("title").toLowerCase();
             Class.forName("oracle.jdbc.driver.OracleDriver");

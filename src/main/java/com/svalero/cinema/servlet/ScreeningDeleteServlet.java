@@ -15,6 +15,7 @@ import java.io.IOException;
 
 @WebServlet("/screening-delete")
 public class ScreeningDeleteServlet extends HttpServlet {
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try{
             int id = Integer.parseInt(request.getParameter("id"));

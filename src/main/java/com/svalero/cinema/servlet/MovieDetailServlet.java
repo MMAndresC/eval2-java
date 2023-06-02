@@ -21,7 +21,9 @@ import java.util.List;
 
 @WebServlet("/movie-detail")
 public class MovieDetailServlet extends HttpServlet {
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //TODO revisar este servlet y ver si puedo agruparlo por fechas
         try{
             int id = Integer.parseInt(request.getParameter("id"));
             Class.forName("oracle.jdbc.driver.OracleDriver");
