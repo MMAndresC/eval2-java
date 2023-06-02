@@ -7,12 +7,17 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import org.jdbi.v3.sqlobject.statement.UseRowMapper;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface ScreeningsDao {
     @SqlQuery("SELECT * FROM Screenings WHERE id_movie= ? ORDER BY dateScreening DESC")
     @UseRowMapper(ScreeningsMapper.class)
     List<Screenings> getScreenings(int idMovie);
+
+    @SqlQuery("SELECT * FROM Screenings WHERE id_movie= ? ORDER BY dateScreening ASC, hourScreening ASC")
+    @UseRowMapper(ScreeningsMapper.class)
+    ArrayList<Screenings> getScreeningsAsc(int idMovie);
 
     @SqlUpdate("DELETE FROM Screenings WHERE screening_id = ?")
     int deleteScreening(int id);

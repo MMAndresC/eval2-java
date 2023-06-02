@@ -21,7 +21,7 @@ public class Movies {
     private String director;
     private String actors;
     @NonNull
-    private LocalDate iniDate;//TODO comprobar conversion fechas
+    private LocalDate iniDate;
     @NonNull
     private Boolean isPremiere;
 

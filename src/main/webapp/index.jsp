@@ -6,7 +6,7 @@
         <div>
             <h1>Cartelera</h1>
             <form class="d-flex" action="movie-search" method="get" id="formSearchMovie">
-                <input class="form-control me-2" type="search" placeholder="Titulo" aria-label="Search">
+                <input class="form-control me-2" type="search" name="title" placeholder="Titulo" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Buscar</button>
                 <div id="result-search"></div>
             </form>
@@ -18,7 +18,7 @@
                         <c:forEach items= "${premiere}" var="movie">
                                 <div class="col">
                                     <div class="card shadow-sm">
-                                        <a href="sessions.jsp?id=${movie.movies_id}">
+                                        <a href="movie-detail?id=${movie.movies_id}">
                                             <img src="../assets/${movie.poster}" class="bd-placeholder-img card-img-top"/>
                                             <p>${movie.title}</p>
                                         </a>
@@ -32,4 +32,6 @@
     </main>
 
 <%@include file="includes/footer.jsp"%>
+
+
 
