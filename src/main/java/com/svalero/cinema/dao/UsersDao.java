@@ -21,6 +21,7 @@ public interface UsersDao {
 
     @SqlUpdate("DELETE FROM Users WHERE email = ? AND password= ?")
     int deleteUser(String email, String password);
+
     @SqlUpdate("UPDATE Users SET name = ?, image = ?, phone = ? WHERE email = ?")
     int editDataUser(String name, String image, String phone, String email);
 

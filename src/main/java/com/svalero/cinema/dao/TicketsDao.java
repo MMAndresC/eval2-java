@@ -33,4 +33,7 @@ public interface TicketsDao {
     @SqlUpdate("INSERT INTO Tickets (email, id_movie, id_hall, date_ticket, hour, price) VALUES (?, ?, ?, TO_DATE( ?, 'DD/MM/YY'), ?, TO_NUMBER(?))")
     void addTicket(String email, int idMovie, int hall, Date date, String hour, float price);
 
+    @SqlUpdate("DELETE FROM Tickets WHERE email = ?")
+    int deleteTicketsByUser(String email);
+
 }
