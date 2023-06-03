@@ -12,7 +12,6 @@ public class TicketsMapper implements RowMapper<Tickets> {
     @Override
     public Tickets map(ResultSet rs, StatementContext ctx) throws SQLException {
         return new Tickets(
-                rs.getInt("ticket_num"),
                 rs.getString("email"),
                 rs.getInt("id_movie"),
                 rs.getInt("id_hall"),

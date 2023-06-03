@@ -12,7 +12,6 @@ import java.util.List;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class Tickets {
-    @NonNull
     private int ticketNum;
     @NonNull
     private String email;

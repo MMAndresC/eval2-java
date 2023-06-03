@@ -45,7 +45,7 @@
                                         a las ${screening.hourScreening}?</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <form class="d-flex" action="buy-ticket" method="get" id="formBuyTicket">
+                                    <form class="d-flex" action="buy-ticket" method="post" id="formBuyTicket">
                                         <input type="hidden" name="email" value="${sessionScope.user}"/>
                                         <input type="hidden" name="idMovie" value="${screening.id_movie}"/>
                                         <input type="hidden" name="idHall" value="${screening.id_hall}"/>
@@ -106,6 +106,7 @@
                 }
                 let numTickets = div.childElementCount;
                 document.getElementById('show-price').innerText = (numTickets * 6.50) + '€'.trim();
+                document.querySelector('[name="price"]').value = numTickets * 6.50;
                 if(numTickets === 0) document.getElementById('warning').hidden = false;
             });
         });
