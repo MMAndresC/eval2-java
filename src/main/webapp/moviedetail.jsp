@@ -20,7 +20,8 @@
                                 <li>${screening.formattedDate}</li>
                                 <ul>
                                     <li>
-                                        <a href="/ticket?id=${screening.id}">${screening.formattedDate} Sala ${screening.id_hall} - ${screening.hourScreening}</a>
+                                        <!--<a href="/ticket?id=${screening.id}">${screening.formattedDate} Sala ${screening.id_hall} - ${screening.hourScreening}</a>-->
+                                        <a href="ticket.jsp?id=${screening.id}">${screening.formattedDate} Sala ${screening.id_hall} - ${screening.hourScreening}</a>
                                         <br>
                                     </li>
 

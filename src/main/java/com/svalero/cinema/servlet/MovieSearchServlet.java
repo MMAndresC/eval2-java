@@ -18,18 +18,25 @@ public class MovieSearchServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         try{
-            String title = request.getParameter("title").toLowerCase();
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            Database.connectDb();
-            List<Movies> moviesList = Database.jdbi.withExtension(MoviesDao.class, MoviesDao::getPremiereMovies);
-            Movies movie = moviesList.stream()
-                                    .filter(movies -> movies.getTitle().toLowerCase().contains(title))
-                                    .findFirst().orElse(null);
-            if(movie != null){
-                response.sendRedirect("movie-detail?id=" + movie.getMovies_id());
+            String title = request.getParameter("title").trim().toLowerCase();
+            String genre = request.getParameter("genre").trim().toLowerCase();
+            if(title != "" || genre != ""){
+                Class.forName("oracle.jdbc.driver.OracleDriver");
+                List<Movies> moviesList = Database.jdbi.withExtension(MoviesDao.class, MoviesDao::getPremiereMovies);
+                Movies movie = moviesList.stream()
+                        .filter(movies -> movies.getTitle().toLowerCase().contains(title) &&
+                                movies.getGenre().toLowerCase().contains(genre))
+                        .findFirst().orElse(null);
+                if(movie != null){
+                    response.sendRedirect("movie-detail?id=" + movie.getMovies_id());
+                }else{
+                    response.sendRedirect("/cinema");
+                }
+            }else{
+                response.sendRedirect("/cinema");
             }
-        }catch(Exception e){
-            throw new ServletException("Error retrieving premiere movies",e);
+        } catch (ClassNotFoundException cnfe) {
+            cnfe.printStackTrace();
         }
     }
 }

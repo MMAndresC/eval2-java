@@ -7,6 +7,7 @@
             <h1>Cartelera</h1>
             <form class="d-flex" action="movie-search" method="get" id="formSearchMovie">
                 <input class="form-control me-2" type="search" name="title" placeholder="Titulo" aria-label="Search">
+                <input class="form-control me-2" type="search" name="genre" placeholder="Genero" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
         </div>
