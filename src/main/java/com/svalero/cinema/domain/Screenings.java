@@ -23,4 +23,5 @@ public class Screenings {
     private String hourScreening;
     private List<Seats> occupied_seats;
     private String formattedDate;
+    private String title;
 }

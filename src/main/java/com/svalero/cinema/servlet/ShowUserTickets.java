@@ -34,7 +34,7 @@ public class ShowUserTickets extends HttpServlet {
                 List<Tickets> tickets = Database.jdbi.withExtension(TicketsDao.class, dao -> dao.getTickets(email));
                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
                 tickets.forEach((ticket) -> {
-                    Movies movie = Database.jdbi.withExtension(MoviesDao.class, dao -> dao.getTitleById(ticket.getIdMovie()));
+                    Movies movie = Database.jdbi.withExtension(MoviesDao.class, dao -> dao.getMovie(ticket.getIdMovie()));
                     ticket.setTitle(movie.getTitle());
                     String strDate = dateFormat.format(ticket.getDate());
                     ticket.setFormattedDate(strDate);

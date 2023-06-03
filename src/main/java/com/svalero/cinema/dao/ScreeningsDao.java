@@ -19,6 +19,10 @@ public interface ScreeningsDao {
     @UseRowMapper(ScreeningsMapper.class)
     ArrayList<Screenings> getScreeningsAsc(int idMovie);
 
+    @SqlQuery("SELECT * FROM Screenings WHERE screening_id= ?")
+    @UseRowMapper(ScreeningsMapper.class)
+    Screenings getSelectedScreening(int id);
+
     @SqlUpdate("DELETE FROM Screenings WHERE screening_id = ?")
     int deleteScreening(int id);
 
@@ -27,6 +31,5 @@ public interface ScreeningsDao {
 
     @SqlUpdate("INSERT INTO Screenings (id_hall, id_movie, dateScreening, hourScreening) VALUES (?, ?, TO_DATE( ?, 'DD/MM/YY'), ?)")
     void addScreening(int hall, int movie, Date date, String hour);
-
 
 }

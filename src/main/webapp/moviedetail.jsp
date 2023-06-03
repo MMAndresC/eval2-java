@@ -7,6 +7,7 @@
     <div class="container">
         <h1>${movie.title}</h1>
         <div class="row" id="pelicula">
+
             <div class="col-md-4">
                 <div class="info">
                     <span class="vose">4K</span>
@@ -20,8 +21,7 @@
                                 <li>${screening.formattedDate}</li>
                                 <ul>
                                     <li>
-                                        <!--<a href="/ticket?id=${screening.id}">${screening.formattedDate} Sala ${screening.id_hall} - ${screening.hourScreening}</a>-->
-                                        <a href="ticket.jsp?id=${screening.id}">${screening.formattedDate} Sala ${screening.id_hall} - ${screening.hourScreening}</a>
+                                        <a href="preticket-info?id=${screening.id}">${screening.formattedDate} Sala ${screening.id_hall} - ${screening.hourScreening}</a>
                                         <br>
                                     </li>
 
@@ -30,8 +30,8 @@
                         </ul>
                     </div>
                 </div>
-
             </div>
+
             <div class="col-md-8">
                 <div class="datos"><label>Fecha de estreno:</label> <span class="date-display-single">${movie.iniDate}</span></div>
                 <div class="datos"><label>Género:</label> <span>${movie.genre}</span></div>
@@ -44,6 +44,7 @@
                     <p><strong>DISPONIBLE COMPRA DE MEGAENTRADA. 6 MODELOS DIFERENTES</strong></p>
                 </div>
             </div>
+
         </div>
     </div>
 </main>

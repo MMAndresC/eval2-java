@@ -14,5 +14,7 @@ public interface CinemaHallsDao {
     @UseRowMapper(CinemaHallsMapper.class)
     List<CinemaHalls> getCinemaHalls();
 
-
+    @SqlQuery("SELECT * FROM Halls WHERE id = ?")
+    @UseRowMapper(CinemaHallsMapper.class)
+    CinemaHalls getScreeningHall(int id);
 }
