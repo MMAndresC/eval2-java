@@ -53,6 +53,17 @@ public class TicketsSearchServlet extends HttpServlet {
                 });
                 request.setAttribute("tickets", tickets);
                 request.setAttribute("date", date);
+                //El numero de botones que tiene que dibujar para la paginacion
+                int numPages = tickets.size() / 5;
+                request.setAttribute("end", numPages);
+                int btn = Integer.parseInt(request.getParameter("btn"));
+                int offset = (btn - 1) * 5;
+                request.setAttribute("offset", offset);
+                if((btn - 1) * 5 <= (tickets.size() - 1) ){
+                    request.setAttribute("limit", offset + 4);
+                }else{
+                    request.setAttribute("limit", tickets.size() - 1);
+                }
                 request.getRequestDispatcher("/usertickets.jsp").forward(request, response);
             }
         }catch(ClassNotFoundException cnfe) {

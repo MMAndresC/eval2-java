@@ -3,6 +3,7 @@
 
 <%@include file="includes/header.jsp"%>
 
+
 <main class="container mt-5 main-user-tickets">
     <div class="row mb-5 text-center">
         <h2 class="h2 text-uppercase">Tickets</h2>
@@ -11,6 +12,7 @@
         <form class="d-flex" action="tickets-search" method="get" id="formSearchTicket">
             <div class="d-flex align-items-center col-6">
                 <input class="form-control me-2 height-user-ticket input-search-date" type="date" name="date" placeholder="Fecha" aria-label="Search" value="${date}">
+                <input type="hidden" name="btn" value="1"/>
                 <button class="btn btn-outline-success height-user-ticket me-1" type="submit">Buscar</button>
                 <button class="btn btn-outline-success height-user-ticket ms-1" type="button">
                     <a href="show-tickets?btn=1">Mostrar todos</a>
@@ -50,7 +52,7 @@
         </ul>
         <nav aria-label="..." class="mt-4 d-flex justify-content-center">
 
-                <ul class="pagination pagination-sm">
+                <ul class="pagination pagination-lg">
                     <c:forEach begin="0" end="${end}" varStatus="status">
                         <li class="page-item" aria-current="page">
                             <button type="submit" class="page-link">
