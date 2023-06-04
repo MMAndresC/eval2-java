@@ -4,50 +4,51 @@
 
 
 
-<main class="container">
+<main class="container mt-5 main-user-data">
     <form class="g-3 container" action="user-edit" method="post" id="formEditUser">
-        <div class="row">
-            <img src="../cinema-data/${data.image}" class="img-thumbnail col" alt="avatar" name="img" id="img">
+        <div class="row d-flex justify-content-center mb-2">
+            <img src="../cinema-data/${data.image}" class="col img-data" alt="avatar" name="img" id="img">
         </div>
-        <div class="row">
+        <div class="row mb-3 mt-2 p-2 d-flex justify-content-center row-img-data">
             <input type="hidden" class="form-control" id="image" name="image" value="${data.image}">
-            <input type="file" class="form-control col" id="newImg" name="newImg" accept="image/jpg, image/png, image/jpeg"
+            <input type="file" class="form-control" id="newImg" name="newImg" accept="image/jpg, image/png, image/jpeg"
                    onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])">
         </div>
-        <div class="row">
+        <div class="row mb-3">
             <div class="col">
-                <label for="email" class="form-label">eMail</label>
-                <div class="input-group">
+                <div class="input-group d-flex align-items-center justify-content-center">
                     <span class="input-group-text" id="inputGroupPrepend3">@</span>
-                    <span class="" id="email" aria-describedby="inputGroupPrepend3" name ="email">${data.email}</span>
+                    <span class="ms-2" id="email" aria-describedby="inputGroupPrepend3" name ="email">${data.email}</span>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
+        <div class="row mb-5 mt-2">
+            <div class="col-md-7">
                 <label for="name" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="name" name="name" value="${data.name}">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <label for="phone" class="form-label">Telefono</label>
                 <input type="text" class="form-control" id="phone" name="phone" value="${data.phone}">
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <button class="btn btn-primary" type="submit">Guardar cambios</button>
-                <button type="button" id="btn-delete" class="btn btn-warning" >BORRAR usuario</button>
+        <div class="row mb-2 mt-3 ">
+            <div class="col-12 d-flex justify-content-center">
+                <button class="btn btn-primary me-2" type="submit">Guardar cambios</button>
+                <button type="button" id="btn-delete" class="btn btn-warning ms-2" >BORRAR usuario</button>
             </div>
         </div>
     </form>
-    <div class="container" id="confirm-dialog-del"hidden>
+    <div class="container modal-delete" id="confirm-dialog-del"hidden>
         <form class="" action="user-delete" method="post" id="formDeleteUser">
             <p>Borrara sus datos personales y el historial de todos los tickets que ha ido comprando</p>
             <p>Esta accion es irreversible, ¿Quiere darse de baja?</p>
             <input type="hidden" class="form-control" id="image-del" name="image-del" value="${data.image}"/>
-            <input type="password" class="form-control" id="password" name="password" placeholder="password">
-            <button class="btn btn-danger" type="submit" id="btn-confirm-del">BORRAR</button>
-            <button class="btn btn-info" type="button" id="btn-cancel-del">Atras</button>
+            <input type="password" class="form-control mb-4" id="password" name="password" placeholder="password">
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-danger me-1" type="submit" id="btn-confirm-del">BORRAR</button>
+                <button class="btn btn-info ms-1" type="button" id="btn-cancel-del">Atras</button>
+            </div>
         </form>
     </div>
     <div id="result"></div>

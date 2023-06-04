@@ -1,8 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-        <footer>
-            <p>Mi güebpeich</p>
+        <footer class="mt-3 pt-5 pb-2 ps-4">
+            <p class="copyrigth ms-2 mt-1 mb-3">® </p>
         </footer>
 
     </body>
 </html>
+
+<script>
+    document.querySelector('.copyrigth').innerText += new Date().getFullYear() + ' Actividad aprendizaje 2º Evaluacion - Mar Andres';
+</script>

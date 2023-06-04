@@ -12,39 +12,40 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
     <script src="https://malsup.github.io/jquery.form.js"></script>
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="stylesheet" href="./styles/style.css">
     <title>Cinexin</title>
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light nav-color">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/cinema">
-                <img src="../assets/logo.jpg" alt="" width="60" height="34" class="d-inline-block align-text-top">
-                Cinexin
+            <a class="navbar-brand d-flex align-items-center" href="/cinema">
+                <img src="../assets/logo.jpg" alt="" width="80" height="50" class="d-inline-block align-text-top">
+                <span class="ms-2">Cinexin</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-flex justify-content-end align-items-center" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse d-flex justify-content-end align-items-center menu" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
                     <c:if test = "${sessionScope.user == null}">
-                        <li class="nav-item">
+                        <li class="nav-item me-1">
                             <a class="nav-link" href="signin.jsp">Registrarse</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item  me-1">
                             <a class="nav-link" href="signup.jsp">Log in</a>
                         </li>
                     </c:if>
                     <c:if test = "${sessionScope.user != null}">
-                        <li class="nav-item">
-                            <p>Bienvenide, ${sessionScope.user}</p>
+                        <li class="nav-item  me-3 d-flex align-items-center">
+                            Bienvenide, ${sessionScope.user}
                         </li>
                         <c:if test = "${sessionScope.role.trim() == 'admin'}">
-                            <li class="nav-item">
+                            <li class="nav-item  me-2">
                                 <a class="nav-link" href="adminzone.jsp">Zona Admin</a>
                             </li>
                         </c:if>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown  me-2">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Zona Usuario
                             </a>
@@ -53,8 +54,8 @@
                                 <li><a class="dropdown-item" href="show-tickets?btn=1">Entradas</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#logoutModal" class="btn btn-outline-danger round">
+                        <li class="nav-item  ms-1">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#logoutModal" class="btn btn-outline-danger btn-login rounded">
                                 ${sessionScope.user.trim().toUpperCase().charAt(0)}
                             </button>
                             <!-- Modal -->

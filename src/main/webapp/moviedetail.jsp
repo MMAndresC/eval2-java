@@ -3,17 +3,14 @@
 
 <%@include file="includes/header.jsp"%>
 
-<main>
+<main class="mt-5">
     <div class="container">
-        <h1>${movie.title}</h1>
+        <h1 class="h1 mt-4 mb-2 h1-title">${movie.title}</h1>
         <div class="row" id="pelicula">
 
             <div class="col-md-4">
-                <div class="info">
-                    <span class="vose">4K</span>
-                </div>
                 <img src="../assets/${movie.poster}" alt="" title="" class="img-responsive" width="375" height="556">
-                <h2>Compra de entradas</h2>
+                <h2 class="h2 mt-3 h2-entradas">Compra de entradas</h2>
                 <div class="sesiones">
                     <div class="horarios">
                         <ul>
@@ -24,7 +21,6 @@
                                         <a href="preticket-info?id=${screening.id}">${screening.formattedDate} Sala ${screening.id_hall} - ${screening.hourScreening}</a>
                                         <br>
                                     </li>
-
                                 </ul>
                             </c:forEach>
                         </ul>

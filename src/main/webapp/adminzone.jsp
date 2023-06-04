@@ -8,14 +8,14 @@
 <c:if test="${sessionScope.role != 'admin'}">
     <c:redirect url = "/"/>
 </c:if>
-<main class="container">
-    <div class="row">
-        <h2 class="col h2">Menu sesiones</h2>
+<main class="container mt-5 main-admin-zone">
+    <div class="row mb-4">
+        <h2 class="col h2 text-center text-uppercase">Menu sesiones</h2>
     </div>
     <form class="row g-3" action="show-screenings" method="post" id="formShowScreenings">
         <div class="row">
             <label for="movies_id" class="form-label">Peliculas</label>
-            <select id="movies_id" name="movies_id" class="form-select">
+            <select id="movies_id" name="movies_id" class="form-select select-movie">
                 <c:forEach items= "${sessionScope.movies}" var="movie">
                     <option value="${movie.movies_id}" ${sessionScope.indexMovie == movie.movies_id ? "selected" : ""}>${movie.title}</option>
                 </c:forEach>
@@ -26,7 +26,7 @@
         </div>
     </form>
 
-    <table class="table">
+    <table class="table mt-5 table-screenings">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -77,28 +77,29 @@
         </div>
     </table>
     <div id="result"></div>
-    <div class="container">
+    <div class="container border-top">
+        <h4 class="h4 text-center text-uppercase mt-3 mb-3">Crear nueva sesion</h4>
         <form class="row g-3" action="screening-add" method="post" id="formAddScreening">
-                <div class="row">
+                <div class="row mt-3 justify-content-center">
                     <span class="col-1">Sala</span>
-                    <select id="select-hall-add" name="hall-add" class="form-select col-2" ${(sessionScope.indexMovie == 0) ? "disabled" : ""}>
+                    <select id="select-hall-add" name="hall-add" class="form-select col-2 select-hall-screening" ${(sessionScope.indexMovie == 0) ? "disabled" : ""}>
                         <c:forEach items= "${sessionScope.halls}" var="hall">
                             <option value="${hall.id}" > Sala ${hall.id}</option>
                         </c:forEach>
                     </select>
                 </div>
-                <div class="row">
+                <div class="row mt-3 justify-content-center">
                     <input type="hidden" id="movie-add" name="movie-add" value="${sessionScope.indexMovie}"/>
                     <span class="col-1">Fecha</span>
                     <input type="date" name="date-add" id="date-add" class="col-2" ${(sessionScope.indexMovie == 0) ? "disabled" : ""}/>
                 </div>
-                <div clas="row">
-                    <span class="col-1">Hora</span>
+                <div clas="row mt-3 justify-content-center">
+                    <span class="col-1 span-desobediente">Hora</span>
                     <input type="text" name="hour-add" id="hour-add" class="col-2" ${(sessionScope.indexMovie == 0) ? "disabled" : ""}/>
                 </div>
-                <div class="row">
-                    <button class="btn btn-primary col-2" type="submit" ${(sessionScope.indexMovie == 0) ? "disabled" : ""}>Añadir</button>
-                    <button class="btn btn-secondary col-2" type="reset">Limpiar</button>
+                <div class="row mt-3 mb-3 justify-content-center">
+                    <button class="btn btn-primary col-2 me-1" type="submit" ${(sessionScope.indexMovie == 0) ? "disabled" : ""}>Añadir</button>
+                    <button class="btn btn-secondary col-2 ms-1" type="reset">Limpiar</button>
                 </div>
         </form>
     </div>

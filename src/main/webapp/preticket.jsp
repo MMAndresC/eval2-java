@@ -3,13 +3,13 @@
 
 <%@include file="includes/header.jsp"%>
 
-<main class="container">
-    <div class="row">
-        <section class="col-6 d-flex flex-column">
+<main class="container mt-5">
+    <div class="row mt-2">
+        <section class="col-6 d-flex flex-column align-items-center">
             <div>
                 <img src="../assets/theater.jpg" class="img-fluid"/>
             </div>
-            <div id="theatre">
+            <div id="theatre" class="p-2">
                 <c:forEach begin="1" end="${lines}" varStatus="line">
                     <c:forEach begin="1" end="${cols}" varStatus="col">
                         <input type="checkbox" name="seat" value="Fila: ${line.index} Butaca: ${col.index}">
@@ -22,14 +22,14 @@
         <section class="col-6">
             <div class="card">
                 <div class="card-header">
-                    ${screening.title}
+                    <span class="h3">${screening.title}</span>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">${screening.formattedDate} - ${screening.hourScreening}</h5>
                     <h5>Sala ${screening.id_hall}</h5>
                     <div id="show-chosen-seats"></div>
                     <p id="show-price">0€</p>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#confirmModal" class="btn btn-primary"
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#confirmModal" class="btn btn-primary mb-5 mt-2"
                             id="btn-prebuy" ${sessionScope.user == null ? "disabled" : ""} > Comprar
                     </button>
                     <!-- Modal -->
@@ -64,7 +64,7 @@
                     </div>
                     <c:if test="${sessionScope.user == null}">
                         <div class='alert alert-danger' role='alert'>
-                            <p>Tienes que <a href="signup.jsp">loguearte</a> o <a href="signin.jsp">registrarte</a> para comprar entradas</p>
+                            <p>Tienes que <a href="signup.jsp" class="link-info">loguearte</a> o <a href="signin.jsp" class="link-info">registrarte</a> para comprar entradas</p>
                         </div>
                     </c:if>
                 </div>

@@ -4,7 +4,7 @@
 <%@include file="includes/header.jsp"%>
 
 
-<main class="container">
+<main class="container mt-5 main-signin">
     <form class="row g-3" action="signin" method="post" id="formNewUser">
         <div class="col-md-6">
             <label for="email" class="form-label">Email</label>
@@ -14,24 +14,24 @@
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <div class="col-12">
+        <div class="col-8">
             <label for="name" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+            <input type="text" class="form-control" id="name" name="name" autocomplete="off" required>
         </div>
-        <div class="col-12">
+        <div class="col-4 mb-2">
             <label for="phone" class="form-label">Telefono</label>
-            <input type="tel" class="form-control" id="phone" name="phone" required>
+            <input type="tel" class="form-control" id="phone" name="phone" autocomplete="off" required>
         </div>
-        <div class="col-6">
-            <img src="../cinema-data/Default_pfp.jpg" alt="user-avatar" id="img"/>
+        <div class="col-6 d-flex justify-content-center">
+            <img src="../cinema-data/Default_pfp.jpg" alt="user-avatar" id="img" class="img-fluid img-signin"/>
         </div>
-        <div class="col-6">
+        <div class="col-6 d-flex flex-column justify-content-center">
             <label for="image" class="form-label">Avatar</label>
-            <input type="file" class="form-control" id="image" name="image" accept="image/jpg, image/png, image/jpeg"
+            <input type="file" class="form-control w-60" id="image" name="image" accept="image/jpg, image/png, image/jpeg"
                    onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])">
         </div>
         <div class="col-12">
-            <div class="form-check">
+            <div class="form-check mt-4 mb-3">
                 <input class="form-check-input" type="checkbox" value="" id="invalidCheck3" required>
                 <label class="form-check-label" for="invalidCheck3">
                     He leido y acepto los terminos de usuario
@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary" id="btnSubmit">Crear Usuario</button>
+            <button type="submit" class="btn btn-primary mt-4 mb-4" id="btnSubmit">Crear Usuario</button>
         </div>
     </form>
     <div id="result"></div>

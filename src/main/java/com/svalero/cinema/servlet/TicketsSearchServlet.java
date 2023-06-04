@@ -25,6 +25,7 @@ import java.util.ArrayList;
 public class TicketsSearchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //TODO solomuestra un registro y con la paginacion no va bien
         try{
             HttpSession session = request.getSession(false);
             if(session == null){

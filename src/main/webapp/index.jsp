@@ -3,11 +3,11 @@
 
 <%@include file="includes/header.jsp"%>
     <main>
-        <div>
-            <h1>Cartelera</h1>
+        <div class="d-flex flex-column align-items-center">
+            <h1 class="h1 mt-5 mb-5 text-uppercase">Cartelera</h1>
             <form class="d-flex" action="movie-search" method="get" id="formSearchMovie">
-                <input class="form-control me-2" type="search" name="title" placeholder="Titulo" aria-label="Search">
-                <input class="form-control me-2" type="search" name="genre" placeholder="Genero" aria-label="Search">
+                <input class="form-control me-3" type="search" name="title" placeholder="Titulo" aria-label="Search">
+                <input class="form-control ms-1 me-2" type="search" name="genre" placeholder="Genero" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
         </div>
@@ -16,11 +16,11 @@
                 <div class="container">
                      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         <c:forEach items= "${premiere}" var="movie">
-                                <div class="col">
+                                <div class="col card-movie">
                                     <div class="card shadow-sm">
                                         <a href="movie-detail?id=${movie.movies_id}">
                                             <img src="../assets/${movie.poster}" class="bd-placeholder-img card-img-top"/>
-                                            <p>${movie.title}</p>
+                                            <p class="text-center mt-2">${movie.title}</p>
                                         </a>
                                     </div>
                                 </div>

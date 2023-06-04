@@ -4,21 +4,23 @@
 
 
 
-<main class="container">
-    <form class="row g-3" action="signup" method="post" id="formRegisterUser">
-        <div class="col-12">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-        <div class="col-12">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" name="password" required>
-        </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary" id="btnSubmit">Log in</button>
-        </div>
-    </form>
-    <div id="result"></div>
+<main class="container mt-5 d-flex justify-content-center main-signup">
+    <div>
+        <form class="row g-3" action="signup" method="post" id="formRegisterUser">
+            <div class="col-12 w-60 mt-2 mb-2">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="col-12 w-60 mb-2">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="col-12 mb-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary" id="btnSubmit">Log in</button>
+            </div>
+        </form>
+        <div id="result" class="mb-5"></div>
+    </div>
 </main>
 
 
