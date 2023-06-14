@@ -13,7 +13,7 @@
             <div class="d-flex align-items-center col-6">
                 <input class="form-control me-2 height-user-ticket input-search-date" type="date" name="date" placeholder="Fecha" aria-label="Search" value="${date}">
                 <input type="hidden" name="btn" value="1"/>
-                <button class="btn btn-outline-success height-user-ticket me-1" type="submit">Buscar</button>
+                <button class="btn btn-outline-success height-user-ticket me-1" type="submit" ${tickets == null ? "disabled" : ""}>Buscar</button>
                 <button class="btn btn-outline-success height-user-ticket ms-1" type="button">
                     <a href="show-tickets?btn=1">Mostrar todos</a>
                 </button>
