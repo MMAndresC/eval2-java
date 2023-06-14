@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
     <script src="https://malsup.github.io/jquery.form.js"></script>
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/style2.css">
     <title>Cinexin</title>
 </head>
 <body>

@@ -38,10 +38,11 @@ footer{
 }
 .main-admin-zone {
     min-height: 75% !important;
+    position: relative !important;
 }
 
-.main-user-data{
-    position: relative;
+.main-user-data {
+    position: relative !important;
 }
 
 
@@ -136,7 +137,7 @@ footer{
     margin-left: 150%;
 }
 
-.modal-delete{
+.modal-delete {
     position:absolute;
     top: 25%;
     left: 30%;
@@ -145,6 +146,16 @@ footer{
     padding: 5%;
     border: 1px solid #7c7878;
     max-width: 500px;
+}
+
+.confirm-del{
+     position: absolute !important;
+     top: 33%;
+     left: 40%;
+     z-index: 9999;
+     background: #c9c9c8;
+     padding: 5%;
+     border: 1px solid #7c7878;
 }
 
 .height-user-ticket{
@@ -179,10 +190,3 @@ fieldset{
     margin-left: 38% !important;
     margin-right: 50px;
 }
-
-
-
-
-
-
-

@@ -66,17 +66,18 @@
             </c:forEach>
         </form>
         </tbody>
-        <div class="container" id="confirm-dialog-del"hidden>
-
-            <p>¿Seguro?</p>
-            <button class="btn btn-danger" type="button" id="btn-confirm-del">
-                <a href="screening-delete?id=" id="delete-link">Borrar</a>
-            </button>
-            <button class="btn btn-info" type="button" id="btn-cancel-del">Atras</button>
-
-        </div>
     </table>
+
+    <div class="confirm-del" id="confirm-dialog-del"hidden>
+        <p>¿Seguro?</p>
+        <button class="btn btn-danger" type="button" id="btn-confirm-del">
+            <a href="screening-delete?id=" id="delete-link">Borrar</a>
+        </button>
+        <button class="btn btn-info" type="button" id="btn-cancel-del">Atras</button>
+    </div>
+
     <div id="result"></div>
+
     <div class="container border-top">
         <h4 class="h4 text-center text-uppercase mt-3 mb-3">Crear nueva sesion</h4>
         <form class="row g-3" action="screening-add" method="post" id="formAddScreening">
